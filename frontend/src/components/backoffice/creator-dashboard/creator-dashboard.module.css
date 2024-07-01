@@ -1,0 +1,64 @@
+/*Sidebar*/
+
+.sideBar {
+    background-color: rgb(240, 240, 240);
+    height: 100vh;
+}
+
+.logo {
+    width: 130px;
+    height: auto;
+    margin: 20%;
+}
+
+/*Profile info*/
+
+.profileImg {
+    border-radius: 100px;
+}
+
+.creatorInfo {
+    font-weight: 600;
+    font-size: 1em;
+}
+
+/*Guide collection*/
+
+.sectionTitle {
+    font-weight: 600;
+    font-size: 3em;
+}
+
+/*Guide card*/
+
+.card {
+    background-color: black;
+    height: 35vh;
+    border-radius: 30px;
+}
+
+.cardImage {
+    width: 100%;
+    height: 35vh;
+    border-radius: 30px;
+    opacity: 70%;
+    object-fit: cover;
+    overflow: hidden;
+    position: relative;
+}
+
+.textContainer {
+    position: absolute;
+}
+
+.cardTitle {
+    color: white;
+    font-weight: bold;
+    font-size: 1.8em;
+    width: 80%;
+}
+
+.cardDescription {
+    color: white;
+    width: 70%;
+}

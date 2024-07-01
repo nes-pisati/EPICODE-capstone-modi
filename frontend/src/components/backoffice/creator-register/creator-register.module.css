@@ -1,0 +1,84 @@
+/*Welcome left section*/
+
+.welcomeSection {
+    margin-top: 10%;
+    border-radius: 20px;
+    height: 80vh;
+    background-color: black;
+    background-image: url("https://www.filomagazine.it/wp-content/uploads/2021/03/Le-Muse-Inquietanti-Giorgio-de-Chirico-analisi.jpeg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    opacity: 80%;
+}
+
+.logo {
+    width: 150px;
+    height: auto;
+    margin: 10%;
+}
+
+.h1 {
+    font-weight: 800;
+    color: white;
+    font-size: 5em;
+    margin-left: 10%;
+}
+
+.h6 {
+    font-weight: 600;
+    color: white;
+    margin-left: 10%;
+    font-size: 1.5em;
+}
+
+/*Register and Login form*/
+
+.formWrapper {
+    padding: 6% 0;
+}
+
+.formTitle {
+    font-size: 2.5em;
+    font-weight: bold;
+}
+
+.label {
+    font-weight: 400;
+    padding: 2% 0;
+    color: rgb(50, 50, 50);
+    font-size: 0.9em;
+}
+
+.formControl {
+    width: 20em;
+    border: none;
+    border-bottom: 2px solid black;
+}
+
+.formButton {
+    border: 3px solid black;
+    border-radius: 17px;
+    width: 10em;
+    height: 3em;
+    font-weight: bold;
+    background-color: transparent;
+}
+
+.formButton:hover {
+    background-color: black;
+    color: white;
+}
+
+.bottomP {
+    font-size: 0.9em;
+    color: gray;
+    margin: 0;
+}
+
+.bottomLink {
+    font-weight: bold;
+    color: rgb(22, 22, 22);
+    border: none;
+    background-color: transparent;
+    padding-bottom: 1em;
+}

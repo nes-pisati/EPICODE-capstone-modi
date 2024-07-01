@@ -25,7 +25,7 @@ const UserSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    avatar: {
+    userAvatar: {
         type: String,
         required: false,
         default: 'https://api.dicebear.com/9.x/fun-emoji/svg?seed=Peanut'

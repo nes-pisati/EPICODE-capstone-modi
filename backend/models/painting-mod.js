@@ -3,15 +3,18 @@ const mongoose = require('mongoose')
 const PaintingSchema = new mongoose.Schema({
     title: {
         type: String,
-        required: true
+        required: true,
+        default: ''
     },
     artist: {
         type: String,
-        required: true
+        required: true,
+        default: ''
     },
     date: {
         type: String,
-        required: true
+        required: true,
+        default: ''
     },
     paintingImg: {
         type: String,

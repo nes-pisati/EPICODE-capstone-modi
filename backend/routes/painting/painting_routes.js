@@ -1,6 +1,27 @@
 const express = require('express')
 const painting = express.Router()
 
+const multer = require('multer')
+const cloudinary = require('cloudinary').v2
+const { CloudinaryStorage } = require('multer-storage-cloudinary')
+
+cloudinary.config({
+    cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
+    api_key: process.env.CLOUDINARY_API_KEY,
+    api_secret: process.env.CLOUDINARY_API_SECRET
+})
+
+const cloudStorage = new CloudinaryStorage({
+    cloudinary: cloudinary,
+    params: {
+        folder: 'painting_image',
+        format: async (req, file) => 'jpg',
+        public_id: (req, file) => file.originalname
+    }
+})
+
+const cloudUpload = multer({ storage: cloudStorage })
+
 //model
 const paintingModel = require('../../models/painting-mod')
 const guideModel = require('../../models/guide-mod')
@@ -14,13 +35,19 @@ const museumModel = require('../../models/museum-mod')
 
 //creare una rotta per il file audio
 
-painting.post('/painting/:guideId', async (req, res) => {
+painting.post('/painting/:guideId', cloudUpload.single('paintingCover'), async (req, res) => {
     
     const guideId = req.params.guideId
+
+    if(!req.file) {
+        return res.status(400).json({ message: 'Errore nel caricamento del file' }); 
+    }
+
     const newPainting = new paintingModel({
         title: req.body.title,
         artist: req.body.artist,
         date: req.body.date,
+        paintingImg: req.file.path,
         description: req.body.description,
         guide: guideId
     })

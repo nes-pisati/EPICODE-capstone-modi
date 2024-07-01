@@ -1,6 +1,27 @@
 const express = require('express')
 const guide = express.Router()
 
+const multer = require('multer')
+const cloudinary = require('cloudinary').v2
+const { CloudinaryStorage } = require('multer-storage-cloudinary')
+
+cloudinary.config({
+    cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
+    api_key: process.env.CLOUDINARY_API_KEY,
+    api_secret: process.env.CLOUDINARY_API_SECRET
+})
+
+const cloudStorage = new CloudinaryStorage({
+    cloudinary: cloudinary,
+    params: {
+        folder: 'guide_cover',
+        format: async (req, file) => 'jpg',
+        public_id: (req, file) => file.originalname
+    }
+})
+
+const cloudUpload = multer({ storage: cloudStorage })
+
 //model
 const guideModel = require('../../models/guide-mod')
 const creatorModel = require('../../models/creator-mod')
@@ -17,7 +38,7 @@ const paintingModel = require('../../models/painting-mod')
 
 
 //POST
-guide.post('/guide/:creatorId/:museumId', async (req, res) => {
+guide.post('/guide/:creatorId/:museumId', cloudUpload.single('guideCover'), async (req, res) => {
 
     const creatorId = req.params.creatorId
     const creator = await creatorModel.findOne({_id: creatorId})
@@ -25,11 +46,16 @@ guide.post('/guide/:creatorId/:museumId', async (req, res) => {
     const museumId = req.params.museumId
     const museum = await museumModel.findOne({_id: museumId})
 
+    if(!req.file) {
+        return res.status(400).json({ message: 'Errore nel caricamento del file' }); 
+    }
+
     const newGuide = new guideModel({
         title: req.body.title,
         creator: creator._id,
         subtitle: req.body.subtitle,
         museum: museum._id,
+        coverImg: req.file.path,
         description: req.body.description
     })
 

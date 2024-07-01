@@ -30,7 +30,7 @@ const encryptPsw = require('../../middlewares/pswCrypt')
 const validateCreatorBody = require('../../middlewares/validate_creator')
 
 
-creatorRegister.post('/creator/register', encryptPsw, validateCreatorBody, cloudUpload.single('creatorAvatar'), async (req, res) => {
+creatorRegister.post('/creator/register', encryptPsw, cloudUpload.single('creatorAvatar'), async (req, res) => {
     
     if(!req.file) {
         return res.status(400).json({ message: 'Errore nel caricamento del file' }); 

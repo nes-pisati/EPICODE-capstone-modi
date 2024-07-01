@@ -1,0 +1,17 @@
+.label {
+    font-weight: 400;
+    padding: 2% 0;
+    color: rgb(50, 50, 50);
+    font-size: 0.9em;
+    font-weight: 600;
+}
+
+.formControl {
+    border: none;
+    border-bottom: 2px solid black;
+    color: gray;
+}
+
+.formControl:focus {
+    border: none;
+}
