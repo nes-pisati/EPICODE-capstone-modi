@@ -1,0 +1,114 @@
+/*MAIN WRAPPER*/
+
+.coverImg {
+    width: 100%;
+    height: 70vh;
+    object-fit: cover;
+    opacity: 0.7;
+    border-radius: 50px;
+    line-height: 1;
+}
+
+.relative {
+    position: relative;
+}
+
+.absolute {
+    position: absolute;
+}
+
+.headline {
+    font-family: "Juzif";
+    font-size: 8em;
+    font-weight: bold;
+    z-index: 10;
+    transform: translateX(-30%);
+    width: 70%;
+}
+
+.p {
+    line-height: 2;
+}
+
+/*GUIDE LIST*/
+
+.input {
+    border-radius: 20px;
+    padding: 3%;
+    width: 100%;
+}
+
+.btn {
+    background-color: transparent;
+    border: none;
+}
+
+/*CARD*/
+
+.cardImage {
+    border-radius: 30px;
+    opacity: 0.7;
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    display: block;
+    height: 55vh;
+}
+
+.absoluteCard {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.top {
+    position: absolute;
+    top: 30px;
+    left: 10%;
+}
+
+.center {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
+
+.cardTitle {
+    font-weight: 800;
+    font-size: 3em;
+}
+
+/*MEDIA QUERIES*/
+
+@media screen and (max-width: 992px) {
+    .coverImg {
+        height: 40vh;
+    }
+
+    .headline {
+        font-family: "Juzif";
+        font-size: 5em;
+        font-weight: bold;
+        z-index: 10;
+        transform: translateX(-2%);
+        width: 100%;
+        line-height: 1;
+    }
+
+    .cardTitle {
+        font-size: 2em;
+    }
+
+    .cardImage {
+        height: 40vh;
+    }
+    
+}

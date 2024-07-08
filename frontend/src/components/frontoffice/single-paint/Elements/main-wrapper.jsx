@@ -33,14 +33,13 @@ export default function MainWrapper() {
     return (
         <Container className='mt-5'>
             <Row className='d-flex align-items-center'>
-                <Col xs={3} md={8}>
+                <Col xs={12} md={6}>
                     <img src={painting.paintingImg} className={Styles.image} />
                 </Col>
-                <Col xs={4} className='ms-5 ms-sm-0 mt-5 align-items-center'>
+                <Col xs={12} md={5} className='ms-2 mt-5 d-flex flex-column'>
                     <h4 className={Styles.title}>{painting.title}</h4>
                     <p className={Styles.artist}>{painting.artist}</p>
                     <p>{painting.date}</p>
-                    <i class="bi bi-alarm"></i>
                     <audio src={SPEAK_URL} controls className={`${Styles.audio} mb-3`} onPlay={console.log('play')}></audio>
                     <FrontofficeBtn text={"fine"} />
                 </Col>
