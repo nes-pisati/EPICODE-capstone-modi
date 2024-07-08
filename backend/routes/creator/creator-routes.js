@@ -25,7 +25,7 @@ creator.get('/creators/:id', async (req, res) => {
     const id = req.params.id;
 
     try {
-        const creator = await creatorModel.findById(id);
+        const creator = await creatorModel.findById(id).populate({path: 'guides'});
         return res.status(200).json(creator)
     } catch (error) {
         return res.status(500).json({message: 'Creator non trovato', error: error})

@@ -1,4 +1,5 @@
 const express = require('express')
+const gtts = require('gtts')
 const painting = express.Router()
 
 const multer = require('multer')
@@ -59,6 +60,18 @@ painting.post('/painting/:guideId', cloudUpload.single('paintingCover'), async (
     } catch (error) {
         return res.status(500).json({message: 'Problemi nella creazione del quadro', error: error})
     }
+})
+
+//TEXT TO SPEECH ROUTE
+painting.get('/speak/:paintingId', async (req, res) => {
+    const id = req.params.paintingId
+    const painting = await paintingModel.findById(id);
+    const text = painting.description
+
+    const speech = new gtts(text, 'it');
+    
+    res.setHeader('Content-Type', 'audio/mpeg');
+    speech.stream().pipe(res)
 })
 
 //GET ALL

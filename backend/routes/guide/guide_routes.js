@@ -94,7 +94,7 @@ guide.get('/guide/:id', async (req, res) => {
     const id = req.params.id;
 
     try {
-        const guide = await guideModel.findById(id);
+        const guide = await guideModel.findById(id).populate({path: 'paintings'});
         return res.status(200).json(guide)
     } catch (error) {
         return res.status(500).json({message: 'Guida non trovata', error: error})

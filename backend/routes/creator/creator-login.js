@@ -25,6 +25,7 @@ creatorLogin.post('/creator/login', async (req, res) => {
                     firstName: creator.firstName,
                     lastName: creator.lastName,
                     email: creator.email,
+                    avatar: creator.creatorAvatar,
                     role: 'creator'
                 }, jwtSecretKey, { expiresIn: '1h'});
             return res.status(200).json(token)
