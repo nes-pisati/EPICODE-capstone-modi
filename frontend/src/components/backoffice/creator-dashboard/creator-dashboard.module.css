@@ -15,6 +15,9 @@
 
 .profileImg {
     border-radius: 100px;
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
 }
 
 .creatorInfo {
@@ -27,6 +30,11 @@
 .sectionTitle {
     font-weight: 600;
     font-size: 3em;
+}
+
+.scroll {
+    height: 70vh;
+    overflow-y: auto;
 }
 
 /*Guide card*/
@@ -53,9 +61,12 @@
 
 .cardTitle {
     color: white;
+    width: 90%;
+    overflow-wrap: break-word;
     font-weight: bold;
-    font-size: 1.8em;
+    font-size: 1.7em;
     width: 80%;
+    text-transform: uppercase;
 }
 
 .cardDescription {

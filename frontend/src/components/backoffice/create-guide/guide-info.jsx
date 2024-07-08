@@ -2,20 +2,24 @@ import React, { useEffect } from 'react'
 import { useState } from 'react'
 import BackofficeInput from '../../reusable/backoffice input/backoffice-input'
 import BackofficeBtn from '../../reusable/backoffice button/backoffice-button'
-import { Form, Row, Col } from 'react-bootstrap'
+import { Alert, Form, Row, Col } from 'react-bootstrap'
 import Styles from '../../reusable/backoffice input/backoffice-input.module.css'
 import axios from 'axios'
+import { jwtDecode } from 'jwt-decode'
 
 export default function GuideInfo() {
 
-  /* Ora arbitrario, da sostituire con ID preso dal local storage*/ 
-  const creatorId = '6681884c9607174b686a1738'
+  const token = localStorage.getItem('creatorLogin')
+  const decoded = jwtDecode(token)
+  console.log(decoded);
+
+  const creatorId = decoded.id
 
   const [museums, setMuseum] = useState([])
   const [museumId, setMuseumId] = useState({})
   const [coverImg, setCoverImg] = useState(null)
   const [formData, setFormData] = useState({})
-  console.log(formData, coverImg);
+  const [error, setError] = useState(null);
 
   const getMuseum = async () => {
     try {
@@ -68,9 +72,12 @@ export default function GuideInfo() {
       })
 
       console.log(response.data);
+      const localStorageItem = JSON.stringify(response.data._id)
+      localStorage.setItem('guideInfo', localStorageItem)
       return response.data
 
     } catch (error) {
+      setError(error)
       if (error.response) {
         console.log('Server responded with status code:', error.response.status);
         console.log('Response data:', error.response.data);
@@ -85,18 +92,18 @@ export default function GuideInfo() {
   return (
     <Form encType="multipart/form-data" onSubmit={handleSubmit}>
       <Row className='mb-5'>
-      <h2>Crea la tua guida!</h2>
+        <h2>Crea la tua guida!</h2>
         <Col sm={12}>
           <Form.Group>
             <Form.Label className={`${Styles.label} py-2`}>Seleziona il museo</Form.Label>
-            <Form.Select 
-            className={`${Styles.formControl} mb-3`}
-            value={museumId}
-            onChange={handleMuseumSelect}>
+            <Form.Select
+              className={`${Styles.formControl} mb-3`}
+              value={museumId}
+              onChange={handleMuseumSelect}>
               <option>Seleziona il museo</option>
               {museums.map((museum, index) => (
                 <option key={index} value={museum._id}>{museum.name}</option>
-              )) }
+              ))}
             </Form.Select>
           </Form.Group>
         </Col>
@@ -135,9 +142,9 @@ export default function GuideInfo() {
             placeholder={"descrivi la tua guida"}
           />
         </Col>
-        <div className='mt-5'>
+        <div className='mt-4'>
           <p>Clicca su "Salva informazioni" per salvare le informazioni e poi "next step" per il passaggio successivo!</p>
-          <BackofficeBtn text={"Salva informazioni"} type={"submit"}/>
+          <BackofficeBtn text={"Salva informazioni"} type={"submit"} />
         </div>
       </Row>
     </Form>

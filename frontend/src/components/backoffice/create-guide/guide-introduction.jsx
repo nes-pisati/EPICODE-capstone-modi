@@ -1,13 +1,14 @@
 import React, { useState } from 'react'
 import BackofficeInput from '../../reusable/backoffice input/backoffice-input'
 import BackofficeBtn from '../../reusable/backoffice button/backoffice-button'
-import { Form, Row, Col } from 'react-bootstrap'
+import { Alert, Form, Row, Col } from 'react-bootstrap'
 import axios from 'axios'
 
 export default function Introduction() {
 
-  /*Ora arbitrario, da sostituire poi con dato salvato nel local storage*/ 
-  const guideId = '6681b6459607174b686a1d93'
+  
+  const localStorageGuideId = localStorage.getItem('guideInfo')
+  const guideId = JSON.parse(localStorageGuideId)
 
   const [formData, setFormData] = useState({
     "title": "Introduzione",
@@ -15,6 +16,7 @@ export default function Introduction() {
     "date": "date"
   })
   const [coverImg, setCoverImg] = useState(null)
+  const [error, setError] = useState(null);
 
   const onChangeFile = (e) => {
     setCoverImg(e.target.files[0])
@@ -52,6 +54,7 @@ export default function Introduction() {
       return response.data
 
     } catch (error) {
+      setError(error)
       if (error.response) {
         console.log('Server responded with status code:', error.response.status);
         console.log('Response data:', error.response.data);
@@ -88,7 +91,10 @@ export default function Introduction() {
             placeholder={"Inserisci qui il testo introduttivo che darà inizio alla tua guida!"}
           />
         </Col>
-        <div className='mt-5'>
+        { error ? 
+        <Alert variant={'danger'}> {error.message} </Alert> : 
+        <Alert>Guida creata correttamente!</Alert> }
+        <div className='mt-4'>
           <p>Clicca su "Salva introduzione" per salvare e poi "next step" per il passaggio successivo!</p>
           <BackofficeBtn text={"Salva introduzione"} type={"submit"}/>
         </div>

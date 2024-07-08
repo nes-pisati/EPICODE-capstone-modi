@@ -16,25 +16,35 @@ import CreateGuide from './pages/backend-interface/CreateGuide';
 import EditGuide from './pages/backend-interface/EditGuide';
 
 function App() {
+
+  const isBackOffice = window.location.pathname.startsWith('/creator-login') ||
+    window.location.pathname.startsWith('/dashboard') ||
+    window.location.pathname.startsWith('/create-guide') ||
+    window.location.pathname.startsWith('/edit-guide/:id');
+
+  const containerClass = isBackOffice ? 'backoffice' : 'frontoffice'
+
   return (
-    <BrowserRouter> 
-      <Routes>
-        {/*Pagine del client*/}
-        <Route index element={<Homepage />}/>
-        <Route path='/guides' element={<Guides />}/>
-        <Route path='/guide-page' element={<GuidePage />}/>
-        <Route path='/guide-paintings' element={<GuidePaintings />}/>
-        <Route path='/painting' element={<Painting />}/>
-        <Route path='/user-login' element={<UserLogin />}/>
-        <Route path='/user-profile' element={<UserProfile />}/>
-        <Route path='*' element={<ErrorPage />}/>
-        {/*Interfaccia del backend*/}
-        <Route path='/creator-login' element={<CreatorLogin />}/>
-        <Route path='/dashboard' element={<Dashboard />}/>
-        <Route path='/create-guide' element={<CreateGuide />}/>
-        <Route path='/edit-guide' element={<EditGuide />}/>
-      </Routes>
-    </BrowserRouter>
+    <div className={`App ${containerClass}`}>
+      <BrowserRouter>
+        <Routes>
+          {/*Frontoffice*/}
+          <Route index element={<Homepage />} />
+          <Route path='/guides' element={<Guides />} />
+          <Route path='/guide-page' element={<GuidePage />} />
+          <Route path='/guide-paintings' element={<GuidePaintings />} />
+          <Route path='/painting' element={<Painting />} />
+          <Route path='/user-login' element={<UserLogin />} />
+          <Route path='/user-profile' element={<UserProfile />} />
+          <Route path='*' element={<ErrorPage />} />
+          {/*Backoffice*/}
+          <Route path='/creator-login' element={<CreatorLogin />} />
+          <Route path='/dashboard' element={<Dashboard />} />
+          <Route path='/create-guide' element={<CreateGuide />} />
+          <Route path='/edit-guide/:id' element={<EditGuide />} />
+        </Routes>
+      </BrowserRouter>
+    </div>
   );
 }
 

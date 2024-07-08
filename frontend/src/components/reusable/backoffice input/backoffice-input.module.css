@@ -10,6 +10,7 @@
     border: none;
     border-bottom: 2px solid black;
     color: gray;
+    height: fit-content;
 }
 
 .formControl:focus {

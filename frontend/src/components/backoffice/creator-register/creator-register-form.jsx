@@ -47,7 +47,6 @@ export default function CreatorRegisterForm() {
         }
       })
       console.log(response.data);
-      navigate('/dashboard')
       return response.data
     } catch (error) {
       if (error.response) {

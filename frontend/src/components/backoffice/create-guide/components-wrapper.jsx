@@ -7,17 +7,6 @@ import { Button } from 'react-bootstrap'
 
 export default function Wrapper() {
 
-    /*IMPORTARE COMPONENTI DI CREAZIONE:
-    Primo componente per lo step uno creazione guida
-    Secondo componente per caricare l'introduzione
-    Terzo componente per caricare i quadri*/
-
-    /*QUI ANDRANNO FATTI I TOGGLE TRA I DIVERSI COMPONENTI:
-    primo toggle da step uno a step due
-    secondo toggle da step due a step 3*/
-
-    /*Inserire possibilità di andare indietro tra componenti */
-
     const [currentComponent, setCurrentComponent] = useState('guideInfo');
 
     const handleChangeComponent = () => {
@@ -29,7 +18,7 @@ export default function Wrapper() {
     }
 
     return (
-        <div className='mt-5'>
+        <div className='mt-5 row'>
             <div>
                 {currentComponent === 'guideInfo' && <GuideInfo />}
                 {currentComponent === 'intro' && <Introduction />}

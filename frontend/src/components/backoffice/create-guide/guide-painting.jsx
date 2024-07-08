@@ -8,8 +8,9 @@ import axios from 'axios'
 export default function Painting() {
 
   const navigate = useNavigate()
-  const guideId = '6681b6459607174b686a1d93'
-
+  const localStorageGuideId = localStorage.getItem('guideInfo')
+  const guideId = JSON.parse(localStorageGuideId)
+  
   const endCreate = () => {
     navigate('/dashboard')
   }
