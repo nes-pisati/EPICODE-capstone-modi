@@ -57,19 +57,27 @@
 
 .textContainer {
     position: absolute;
+    width: 16%;
 }
 
 .cardTitle {
     color: white;
     width: 90%;
-    overflow-wrap: break-word;
     font-weight: bold;
-    font-size: 1.7em;
+    font-size: 1.4em;
     width: 80%;
     text-transform: uppercase;
+    word-wrap: break-word;
 }
 
 .cardDescription {
     color: white;
     width: 70%;
+}
+
+.cardBtn {
+    background-color: transparent;
+    border: none;
+    color: white;
+    font-size: 1.5em;
 }

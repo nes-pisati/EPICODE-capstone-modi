@@ -40,7 +40,10 @@
     position: absolute;
 }
 
-
+a {
+    color: black;
+    font-weight: bold;
+}
 
 /*Edit painting component*/
 
@@ -48,6 +51,8 @@
     border: 3px solid black;
     border-radius: 20px;
     height: 80vh;
+    overflow: scroll;
+    padding-bottom: 3%;
 }
 
 .paintingImg {
@@ -57,4 +62,10 @@
     object-fit: cover;
 }
 
+.dNone {
+    display: none;
+}
 
+.dBlock {
+    display: block;
+}

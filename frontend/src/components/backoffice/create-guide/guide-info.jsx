@@ -2,10 +2,11 @@ import React, { useEffect } from 'react'
 import { useState } from 'react'
 import BackofficeInput from '../../reusable/backoffice input/backoffice-input'
 import BackofficeBtn from '../../reusable/backoffice button/backoffice-button'
-import { Alert, Form, Row, Col } from 'react-bootstrap'
+import { Form, Row, Col } from 'react-bootstrap'
 import Styles from '../../reusable/backoffice input/backoffice-input.module.css'
 import axios from 'axios'
 import { jwtDecode } from 'jwt-decode'
+import BackofficeModal from '../../reusable/modale/modal'
 
 export default function GuideInfo() {
 
@@ -18,8 +19,12 @@ export default function GuideInfo() {
   const [museums, setMuseum] = useState([])
   const [museumId, setMuseumId] = useState({})
   const [coverImg, setCoverImg] = useState(null)
+
   const [formData, setFormData] = useState({})
-  const [error, setError] = useState(null);
+  const [error, setError] = useState(null)
+
+  const [showModal, setShowModal] = useState(false)
+  const [isNotToShow, setisNotToShow] = useState(false)
 
   const getMuseum = async () => {
     try {
@@ -71,9 +76,10 @@ export default function GuideInfo() {
         }
       })
 
-      console.log(response.data);
       const localStorageItem = JSON.stringify(response.data._id)
       localStorage.setItem('guideInfo', localStorageItem)
+      setShowModal(true)
+      setisNotToShow(true)
       return response.data
 
     } catch (error) {
@@ -88,6 +94,8 @@ export default function GuideInfo() {
       }
     }
   }
+
+  const handleClose = () => setShowModal(false)
 
   return (
     <Form encType="multipart/form-data" onSubmit={handleSubmit}>
@@ -146,6 +154,14 @@ export default function GuideInfo() {
           <p>Clicca su "Salva informazioni" per salvare le informazioni e poi "next step" per il passaggio successivo!</p>
           <BackofficeBtn text={"Salva informazioni"} type={"submit"} />
         </div>
+        {showModal && (
+          <BackofficeModal 
+            body={"Guida creata correttamente!"}
+            closeModal={handleClose}
+            doAction = {isNotToShow? null : handleClose}
+            isNotToShow = {isNotToShow}
+          />
+        )}
       </Row>
     </Form>
   )

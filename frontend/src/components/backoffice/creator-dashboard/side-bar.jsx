@@ -7,7 +7,7 @@ import CreateButton from './elements/guide-create-button'
 export default function SideBar() {
 
   return (
-    <div className={`${Styles.sideBar} col-2 col-md-3 d-flex flex-column align-items-center`}>
+    <div className={`${Styles.sideBar} col-2 col-md-3 d-flex flex-column align-items-center px-5`}>
       <img src={logo} alt="logo modì nero" className={Styles.logo}/>
       <ProfileInfo />
       <CreateButton />

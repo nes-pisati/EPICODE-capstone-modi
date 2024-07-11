@@ -1,18 +1,16 @@
 import React from 'react'
 import { useState } from 'react'
-import { useNavigate } from 'react-router-dom'
 import axios from 'axios'
 import Styles from "./creator-register.module.css"
 import BackofficeInput from '../../reusable/backoffice input/backoffice-input'
 import { Form } from 'react-bootstrap'
+import CreatorLoginForm from './creator-login-form'
 
 export default function CreatorRegisterForm() {
 
-  const navigate = useNavigate()
-
   const [formData, setFormData] = useState({})
   const [avatarFile, setAvatarFile] = useState(null)
-  console.log(formData, avatarFile);
+  const [isRegistered, setIsRegistered] = useState(false)
 
   const onChangeFile = (e) => {
     setAvatarFile(e.target.files[0])
@@ -47,6 +45,7 @@ export default function CreatorRegisterForm() {
         }
       })
       console.log(response.data);
+      setIsRegistered(true)
       return response.data
     } catch (error) {
       if (error.response) {
@@ -64,45 +63,47 @@ export default function CreatorRegisterForm() {
 
   return (
     <div className={`${Styles.formWrapper} d-flex flex-column align-items-center`}>
-      <Form encType="multipart/form-data" onSubmit={handleSubmit} className='mt-5'>
-      <h2 className={`${Styles.formTitle} mb-4`}>Registrati</h2>
-        <BackofficeInput
-          labelText={"First name"}
-          onChange={onChangeInput}
-          name={"firstName"}
-          type={"text"}
-          placeholder={"inserisci il tuo nome"}
-        />
-        <BackofficeInput
-          labelText={"Last name"}
-          onChange={onChangeInput}
-          name={"lastName"}
-          type={"text"}
-          placeholder={"inserisci il tuo cognome"}
-        />
-        <BackofficeInput
-          labelText={"Email"}
-          onChange={onChangeInput}
-          name={"email"}
-          type={"text"}
-          placeholder={"inserisci il tuo indirizzo mail"}
-        />
-        <BackofficeInput
-          labelText={"Password"}
-          onChange={onChangeInput}
-          name={"password"}
-          type={"password"}
-          placeholder={"scegli la password"}
-        />
-        <BackofficeInput
-          labelText={"Profile picture"}
-          onChange={onChangeFile}
-          name={"creatorAvatar"}
-          type={"file"}
-          placeholder={"scegli la password"}
-        />
-        <button type="submit" className={`${Styles.formButton} mt-3`}>Registrati</button>
-      </Form>
-    </div>
+      {!isRegistered ? (
+        <Form encType="multipart/form-data" onSubmit={handleSubmit} className='mt-5'>
+        <h2 className={`${Styles.formTitle} mb-4`}>Registrati</h2>
+          <BackofficeInput
+            labelText={"First name"}
+            onChange={onChangeInput}
+            name={"firstName"}
+            type={"text"}
+            placeholder={"inserisci il tuo nome"}
+          />
+          <BackofficeInput
+            labelText={"Last name"}
+            onChange={onChangeInput}
+            name={"lastName"}
+            type={"text"}
+            placeholder={"inserisci il tuo cognome"}
+          />
+          <BackofficeInput
+            labelText={"Email"}
+            onChange={onChangeInput}
+            name={"email"}
+            type={"text"}
+            placeholder={"inserisci il tuo indirizzo mail"}
+          />
+          <BackofficeInput
+            labelText={"Password"}
+            onChange={onChangeInput}
+            name={"password"}
+            type={"password"}
+            placeholder={"scegli la password"}
+          />
+          <BackofficeInput
+            labelText={"Profile picture"}
+            onChange={onChangeFile}
+            name={"creatorAvatar"}
+            type={"file"}
+            placeholder={"scegli la password"}
+          />
+          <button type="submit" className={`${Styles.formButton} mt-3`}>Registrati</button>
+        </Form>  
+      ) : <CreatorLoginForm />}
+       </div>
   )
 }

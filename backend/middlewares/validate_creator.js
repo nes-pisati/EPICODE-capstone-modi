@@ -18,7 +18,8 @@ const validateCreatorBody = [
         .withMessage('La password deve avere almeno 7 caratteri'),
         
     (req, res, next) => {
-        const errors = validationResult(req)
+        const errors = validationResult(req);
+        console.log(errors);
         if(!errors.isEmpty()){
             return res.status(400).json({errors: errors.array()})
         }

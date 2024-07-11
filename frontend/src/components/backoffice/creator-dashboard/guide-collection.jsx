@@ -4,13 +4,17 @@ import GuideCard from './elements/guide-card'
 import { Container, Row } from 'react-bootstrap'
 import { jwtDecode } from 'jwt-decode'
 import axios from 'axios'
+import { useNavigate } from 'react-router-dom'
 
 export default function GuideCollection() {
 
     const token = localStorage.getItem('creatorLogin')
     const decoded = jwtDecode(token)
+    const navigate = useNavigate()
 
-    console.log(decoded);
+    if(!token) {
+        navigate('/creator-login')
+    }
 
     const creatorId = decoded.id
 
@@ -46,6 +50,8 @@ export default function GuideCollection() {
                             img={guide.coverImg}
                             title={guide.title}
                             subtitle={guide.subtitle}
+                            creator={guide.creator}
+                            museum={guide.museum}
                         />
                     ))}
                 </Row>

@@ -20,7 +20,7 @@ export default function Hero() {
               <img src={Logo} className={Styles.logo} />
             </Col>
           </Row>
-          <h1 className={Styles.headline}>Lorem ipsum sit amet</h1>
+          <h1 className={Styles.headline}>L'arte come non l'avevi mai vista</h1>
           <FrontofficeBtn
             text="scopri"
             onClick={() => navigate('/guides')}

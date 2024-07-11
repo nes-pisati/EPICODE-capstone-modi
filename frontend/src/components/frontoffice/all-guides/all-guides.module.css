@@ -6,7 +6,6 @@
     object-fit: cover;
     opacity: 0.7;
     border-radius: 50px;
-    line-height: 1;
 }
 
 .relative {
@@ -83,7 +82,8 @@
 
 .cardTitle {
     font-weight: 800;
-    font-size: 3em;
+    font-size: 2.5em;
+    text-transform: uppercase;
 }
 
 /*MEDIA QUERIES*/
@@ -95,7 +95,7 @@
 
     .headline {
         font-family: "Juzif";
-        font-size: 5em;
+        font-size: 4em;
         font-weight: bold;
         z-index: 10;
         transform: translateX(-2%);
@@ -109,6 +109,14 @@
 
     .cardImage {
         height: 40vh;
+    }
+
+    .cardTitle {
+        font-size: 1.5em;
+    }
+
+    .cardMuseum {
+        font-size: 0.8em;
     }
     
 }

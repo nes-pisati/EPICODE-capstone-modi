@@ -10,14 +10,14 @@ export default function MainWrapper() {
                 <div className={`${Styles.relative} d-flex align-items-end`}>
                     <img src={coverImg} className={`${Styles.coverImg} px-1`} />
                     <div className={`${Styles.absolute} d-flex flex-column align-items-center justify-content-center`}>
-                        <h1 className={Styles.headline}>Lorem ipsum sit amet</h1>
+                        <h1 className={Styles.headline}>Benvenut* tra le nostre guide</h1>
                     </div>
                 </div>
             </Row>
             <Row>
                 <p className={`${Styles.p} mt-5`}>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis malesuada a mauris at blandit. Pellentesque tristique justo diam, et laoreet leo placerat quis. Pellentesque nisi ligula, posuere id tincidunt eget, consectetur tempus diam. Ut eget dolor nec quam aliquam vulputate. Sed nulla nibh, elementum ut rhoncus in, tempor nec ipsum.
-                    Etiam efficitur ex non ipsum tempus sollicitudin. Donec enim ex, mattis convallis mattis ac, sodales venenatis arcu. Donec semper
+                   Tutto ciò che devi fare è scegliere il luogo e cercare il tema che vorresti approfondire.
+                    Seleziona la guida, clicca su inizia e lasciati trasportare in un percorso che, siamo sicuri, ti emozionerà.
                 </p>
             </Row>
         </Container>

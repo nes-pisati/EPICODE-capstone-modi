@@ -4,6 +4,7 @@ import { Col, Row, Container } from 'react-bootstrap'
 import Styles from '../edit-guide/guide-editing.module.css'
 import EditGuide from './edit-guide/edit-guide'
 import PaintingsList from './edit-painting/components/painting-list'
+import {BoxArrowInLeft} from 'react-bootstrap-icons'
 
 
 export default function GuideEditing() {
@@ -12,7 +13,7 @@ export default function GuideEditing() {
       <Container className='mt-5'>
         <div className='d-flex justify-content-between align-items-center'>
           <img src={logo} className={Styles.logo} />
-          <a href='/dashboard'>Go back</a>
+          <a href='/dashboard'> <BoxArrowInLeft size={24}/> Go back</a>
         </div>
         <Row className='mt-5'>
           <Col>

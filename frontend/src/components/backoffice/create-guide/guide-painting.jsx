@@ -4,6 +4,7 @@ import BackofficeInput from '../../reusable/backoffice input/backoffice-input'
 import BackofficeBtn from '../../reusable/backoffice button/backoffice-button'
 import { Form, Row, Col } from 'react-bootstrap'
 import axios from 'axios'
+import BackofficeModal from '../../reusable/modale/modal'
 
 export default function Painting() {
 
@@ -17,6 +18,9 @@ export default function Painting() {
 
   const [formData, setFormData] = useState({})
   const [coverImg, setCoverImg] = useState(null)
+
+  const [showModal, setShowModal] = useState(false)
+  const [isNotToShow, setisNotToShow] = useState(false)
 
   const onChangeFile = (e) => {
     setCoverImg(e.target.files[0])
@@ -49,7 +53,8 @@ export default function Painting() {
         }
       })
 
-      console.log(response.data);
+      setShowModal(true)
+      setisNotToShow(true)
       return response.data
 
     } catch (error) {
@@ -64,6 +69,8 @@ export default function Painting() {
     }
   }
 
+  const handleClose = () => setShowModal(false)
+
   return (
     <Form encType="multipart/form-data" onSubmit={handleSubmit}>
       <Row className='mb-5'>
@@ -73,7 +80,7 @@ export default function Painting() {
             onChange={onChangeInput}
             name={"title"}
             type={"tex"}
-            placeholder={"inserisci il titolo del quadro"}
+            placeholder={"Inserisci il titolo del quadro"}
           />
         </Col>
         <Col sm={12} md={6}>
@@ -82,7 +89,7 @@ export default function Painting() {
             onChange={onChangeInput}
             name={"artist"}
             type={"text"}
-            placeholder={"inserisci il nome del artista"}
+            placeholder={"Inserisci il nome del artista"}
           />
         </Col>
         <Col sm={12} md={6}>
@@ -91,7 +98,7 @@ export default function Painting() {
             onChange={onChangeInput}
             name={"date"}
             type={"text"}
-            placeholder={"inserisci il periodo storico"}
+            placeholder={"Inserisci il periodo storico"}
           />
         </Col>
         <Col sm={12} md={6}>
@@ -108,14 +115,22 @@ export default function Painting() {
             onChange={onChangeInput}
             name={"description"}
             type={"text"}
-            placeholder={"descrivi il quadro"}
+            placeholder={"Descrivi il quadro"}
           />
         </Col>
       </Row>
-      <Row className='d-flex justify-content-between'>
+      <Row className='d-flex justify-content-between gap-2'>
         <BackofficeBtn text={"Aggiungi"} type={"submit"}/>
         <BackofficeBtn text={"Termina"} onClick={endCreate}/>
       </Row>
+      {showModal && (
+          <BackofficeModal 
+            body={"Quadro inserito correttamente!"}
+            closeModal={handleClose}
+            doAction = {isNotToShow? null : handleClose}
+            isNotToShow = {isNotToShow}
+          />
+        )}
     </Form>
   )
 }

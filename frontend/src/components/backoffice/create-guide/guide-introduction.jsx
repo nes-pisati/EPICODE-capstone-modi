@@ -3,6 +3,7 @@ import BackofficeInput from '../../reusable/backoffice input/backoffice-input'
 import BackofficeBtn from '../../reusable/backoffice button/backoffice-button'
 import { Alert, Form, Row, Col } from 'react-bootstrap'
 import axios from 'axios'
+import BackofficeModal from '../../reusable/modale/modal'
 
 export default function Introduction() {
 
@@ -17,6 +18,9 @@ export default function Introduction() {
   })
   const [coverImg, setCoverImg] = useState(null)
   const [error, setError] = useState(null);
+
+  const [showModal, setShowModal] = useState(false)
+  const [isNotToShow, setisNotToShow] = useState(false)
 
   const onChangeFile = (e) => {
     setCoverImg(e.target.files[0])
@@ -51,6 +55,8 @@ export default function Introduction() {
       })
 
       console.log(response.data);
+      setShowModal(true)
+      setisNotToShow(true)
       return response.data
 
     } catch (error) {
@@ -66,6 +72,7 @@ export default function Introduction() {
     }
   }
 
+  const handleClose = () => setShowModal(false)
 
   return (
     <Form encType="multipart/form-data" onSubmit={handleSubmit}>
@@ -91,13 +98,18 @@ export default function Introduction() {
             placeholder={"Inserisci qui il testo introduttivo che darà inizio alla tua guida!"}
           />
         </Col>
-        { error ? 
-        <Alert variant={'danger'}> {error.message} </Alert> : 
-        <Alert>Guida creata correttamente!</Alert> }
         <div className='mt-4'>
           <p>Clicca su "Salva introduzione" per salvare e poi "next step" per il passaggio successivo!</p>
           <BackofficeBtn text={"Salva introduzione"} type={"submit"}/>
         </div>
+        {showModal && (
+          <BackofficeModal 
+            body={"Introduzione inserita correttamente!"}
+            closeModal={handleClose}
+            doAction = {isNotToShow? null : handleClose}
+            isNotToShow = {isNotToShow}
+          />
+        )}
       </Row>
     </Form>
   )

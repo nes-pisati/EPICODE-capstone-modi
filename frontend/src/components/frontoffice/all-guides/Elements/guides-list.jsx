@@ -1,13 +1,15 @@
 import React, { useEffect, useState } from 'react'
 import { Container, Row, Col } from 'react-bootstrap'
-import Styles from '../all-guides.module.css'
-import { Search } from 'react-bootstrap-icons';
 import FrontofficeGuideCard from './guide-card';
 import axios from 'axios'
+import SelectMuseum from './select-museum';
+import FindGuide from './find-guide';
 
 export default function GuidesList() {
 
   const [guides, setGuides] = useState([])
+  const [selectedMuseum, setSelectedMuseum] = useState('')
+  const [search, setSearch] = useState('')
 
   useEffect(() => {
     const getGuides = async () => {
@@ -20,28 +22,29 @@ export default function GuidesList() {
     }; getGuides()
   }, [])
 
-  console.log(guides[2]);
+  const handleSearch = (search) => {
+    setSearch(search)
+  }
+
+  const filteredGuides = guides.filter(guide => {
+    const museumFilter = selectedMuseum ? guide.museum.name === selectedMuseum : true;
+    const keywordFilter = search ? guide.title.toLowerCase().includes(search.toLowerCase()) : true;
+    return museumFilter && keywordFilter
+  })
 
   return (
     <Container className='mt-3'>
-      <Row className='d-flex align-items-center'>
-        <Col xs={11} md={11} lg={6}>
-          <select name="museums" id="selectMuseum" className={Styles.input} placeholder="Seleziona un museo">
-            <option value="">Seleziona un museo</option>
-            <option value="one">one</option>
-          </select>
-        </Col>
-        <Col xs={12} md={12} lg={6} className='d-flex justify-content-center align-items-center'>
-          <input type="select" className={Styles.input} placeholder="Cerca" />
-          <button className={Styles.btn}><Search color='white' size={24} className='ms-1' /></button>
-        </Col>
+      <Row className='d-flex align-items-center gap-2'>
+        <SelectMuseum onSelectMuseum={setSelectedMuseum}/>
+        <FindGuide onSearch={handleSearch}/>
       </Row>
       <Row className='mt-5 pb-5'>
-        {guides.map(guide => (
+        {filteredGuides.map(guide => (
           <FrontofficeGuideCard
+            key={guide._id}
             id={guide._id}
             museum={guide.museum.name}
-            image= {guide.coverImg}            
+            image={guide.coverImg}
             title={guide.title}
             subtitle={guide.subtitle}
           />

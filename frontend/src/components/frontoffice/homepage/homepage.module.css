@@ -99,12 +99,14 @@
 
 @media screen and (max-width: 600px) {
     .headline {
+        padding-top: 15%;
         font-family: "Juzif";
-        font-size: 6em;
+        font-size: 5em;
         font-weight: bold;
         z-index: 10;
         transform: translateX(-2%);
         width: 100%;
+        line-height: 1.1;
     }
 
     .headlineDiscover {
@@ -114,5 +116,9 @@
         z-index: 10;
         transform: translateX(-2%);
         width: 100%;
+    }
+
+    .h2 {
+        font-size: 4.5em;
     }
   }

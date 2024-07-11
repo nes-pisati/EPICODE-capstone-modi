@@ -32,8 +32,8 @@ function App() {
           <Route index element={<Homepage />} />
           <Route path='/guides' element={<Guides />} />
           <Route path='/guide-page/:id' element={<GuidePage />} />
-          <Route path='/guide-paintings' element={<GuidePaintings />} />
-          <Route path='/painting' element={<Painting />} />
+          <Route path='/guide-paintings/:id' element={<GuidePaintings />} />
+          <Route path='/painting/:id' element={<Painting />} />
           <Route path='/user-login' element={<UserLogin />} />
           <Route path='/user-profile' element={<UserProfile />} />
           <Route path='*' element={<ErrorPage />} />
