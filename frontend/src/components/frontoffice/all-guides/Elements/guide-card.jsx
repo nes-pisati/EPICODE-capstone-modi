@@ -4,6 +4,7 @@ import Styles from '../all-guides.module.css'
 import FrontofficeBtnWidth from '../../../reusable/frontoffice button w-100/frontoffice-button'
 import { GeoAlt, Google } from 'react-bootstrap-icons'
 import { useNavigate } from 'react-router-dom'
+
 export default function FrontofficeGuideCard({id, museum, image, title, subtitle}) {
 
   const navigate = useNavigate()

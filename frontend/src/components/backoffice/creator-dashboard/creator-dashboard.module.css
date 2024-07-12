@@ -81,3 +81,22 @@
     color: white;
     font-size: 1.5em;
 }
+
+/*MEDIA QUERIES*/
+
+@media screen and (max-width: 992px) {
+    .sideBar {
+        background-color: rgb(240, 240, 240);
+        height: 40vh;
+    }
+
+    .logo {
+        width: 90px;
+        height: auto;
+        margin: 7%;
+    }
+
+    .textContainer {
+        width: 100%;
+    }
+}

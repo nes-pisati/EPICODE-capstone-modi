@@ -1,6 +1,6 @@
 import React from 'react'
 import Styles from '../guide-paintings.module.css'
-import { Container, Row, Col } from 'react-bootstrap'
+import { Container } from 'react-bootstrap'
 
 export default function Header({title, description}) {
 

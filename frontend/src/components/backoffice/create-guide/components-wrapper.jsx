@@ -2,7 +2,6 @@ import React, { useState } from 'react'
 import GuideInfo from './guide-info'
 import Painting from './guide-painting'
 import Introduction from './guide-introduction'
-import BackofficeBtn from '../../reusable/backoffice button/backoffice-button'
 import { Button } from 'react-bootstrap'
 
 export default function Wrapper() {

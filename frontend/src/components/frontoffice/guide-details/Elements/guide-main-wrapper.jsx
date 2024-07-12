@@ -41,7 +41,6 @@ export default function GuideMainWrapper() {
         navigate(`/guide-paintings/${guide._id}`)
     }
 
-    console.log(guide.paintings);
     return (
         <Container className='pb-5'>
             <GuideHeader 

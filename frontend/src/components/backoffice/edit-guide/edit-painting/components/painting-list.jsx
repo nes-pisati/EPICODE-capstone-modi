@@ -76,7 +76,6 @@ export default function PaintingsList() {
         try {
             const response = await axios.put(`http://localhost:3030/painting/${paintingId}`, formData)
             setComponent('PaintingsList')
-            console.log(response.data);
         } catch (error) {
             if (error.response) {
                 console.log('Server responded with status code:', error.response.status);

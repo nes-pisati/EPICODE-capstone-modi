@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import Styles from './creator-dashboard.module.css'
 import GuideCard from './elements/guide-card'
-import { Container, Row } from 'react-bootstrap'
+import { Container, Row, Col } from 'react-bootstrap'
 import { jwtDecode } from 'jwt-decode'
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
@@ -34,10 +34,8 @@ export default function GuideCollection() {
         getGuides()
     }, [])
 
-    console.log(guides);
-
     return (
-        <Container className={`${Styles.guideSection} col-8 col-md-9 ps-5 pt-5 pb-5`}>
+        <Col xs={12} lg={9} className={`${Styles.guideSection} ps-5 pt-5 pb-5`}>
             <div>
                 <h2 className={Styles.sectionTitle}>Le tue guide</h2>
             </div>
@@ -56,6 +54,6 @@ export default function GuideCollection() {
                     ))}
                 </Row>
             </Container>
-        </Container>
+        </Col>
     )
 }

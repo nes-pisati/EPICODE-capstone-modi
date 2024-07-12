@@ -8,8 +8,6 @@ export default function ProfileInfo() {
   const token = localStorage.getItem('creatorLogin')
   const decoded = jwtDecode(token)
 
-  console.log(decoded);
-
   return (
     <div className='d-flex flex-column align-items-center'>
       <img src={decoded.avatar} alt="immagine profilo creator" className={`${Styles.profileImg} mb-3`}/>

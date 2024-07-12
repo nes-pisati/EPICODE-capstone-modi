@@ -1,6 +1,6 @@
 import React from 'react'
 import coverImg from '../../../../assets/Tiziano_amor_sacro_amor_profano.jpg'
-import { Container, Row, Col } from 'react-bootstrap'
+import { Container, Row } from 'react-bootstrap'
 import Styles from '../all-guides.module.css'
 
 export default function MainWrapper() {

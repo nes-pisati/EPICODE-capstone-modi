@@ -6,8 +6,8 @@ export default function CreatorWelcome() {
     return (
             <div className={Styles.welcomeSection}>
                 <img src={logo} alt="logo modì bianco" className={Styles.logo}/>
-                <h1 className={Styles.h1}>WELCOME ON MODÌ</h1>
-                <h6 className={Styles.h6}>Lorem ipsum dolor sit amet</h6>
+                <h1 className={Styles.h1}>WELCOME TO MODÌ</h1>
+                <h6 className={Styles.h6}>Registrati o accedi per iniziare a creare le tue guide!</h6>
             </div>
     )
 }

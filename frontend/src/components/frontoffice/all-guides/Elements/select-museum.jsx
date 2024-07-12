@@ -24,7 +24,7 @@ export default function SelectMuseum({ onSelectMuseum }) {
     }
 
     return (
-        <Col xs={11} md={11} lg={6}>
+        <Col xs={11} md={11} lg={5}>
             <select
                 name="museums"
                 id="selectMuseum" 

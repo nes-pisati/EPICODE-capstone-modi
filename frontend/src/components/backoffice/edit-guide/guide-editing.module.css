@@ -69,3 +69,11 @@ a {
 .dBlock {
     display: block;
 }
+
+/*Media queries*/
+
+@media screen and (max-width: 992px) {
+    .PaintingsList {
+        margin-top: 2%;
+    }
+}

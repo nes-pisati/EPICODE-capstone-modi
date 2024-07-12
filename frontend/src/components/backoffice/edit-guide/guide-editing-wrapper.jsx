@@ -16,10 +16,10 @@ export default function GuideEditing() {
           <a href='/dashboard'> <BoxArrowInLeft size={24}/> Go back</a>
         </div>
         <Row className='mt-5'>
-          <Col>
+          <Col md={12} lg={6}>
             <EditGuide />
           </Col>
-          <Col>
+          <Col md={12} lg={6} className={Styles.PaintingsList}>
             <PaintingsList />
           </Col>
         </Row>

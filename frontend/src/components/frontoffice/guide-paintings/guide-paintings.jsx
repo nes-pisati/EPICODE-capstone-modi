@@ -20,8 +20,6 @@ export default function GuidePaintingList() {
     description: ''
   }])
 
-  console.log(paintings);
-
   useEffect(() => {
     const getGuide = async () => {
       try {
@@ -34,8 +32,6 @@ export default function GuidePaintingList() {
     };
     getGuide()
   }, [])
-
-  console.log(paintings);
 
   return (
     <>

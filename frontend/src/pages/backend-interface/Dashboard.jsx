@@ -1,14 +1,15 @@
 import React from 'react'
 import SideBar from '../../components/backoffice/creator-dashboard/side-bar'
 import GuideCollection from '../../components/backoffice/creator-dashboard/guide-collection'
+import {Container, Row} from 'react-bootstrap'
 
 export default function Dashboard() {
   return (
-    <div className='container m-0 p-0'>
-      <div className='row'>
+    <Container className=' m-0 p-0'>
+      <Row>
         <SideBar />
         <GuideCollection />
-      </div>
-    </div>
+      </Row>
+    </Container>
   )
 }

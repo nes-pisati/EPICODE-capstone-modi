@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useParams, useNavigate } from 'react-router-dom';
 import { Container, Row, Col } from 'react-bootstrap'
 import FrontofficeBtn from '../../../reusable/frontoffice button/frontoffice-button'
@@ -31,8 +31,6 @@ export default function MainWrapper() {
             }
         }; getPainting()
     }, [])
-
-    console.log(painting);
 
     const handleGoBack = () => {
         navigate(`/guide-paintings/${painting.guide}`)

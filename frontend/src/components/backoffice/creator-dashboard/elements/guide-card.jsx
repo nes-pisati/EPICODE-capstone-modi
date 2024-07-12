@@ -1,9 +1,10 @@
-import React, {useEffect, useState} from 'react'
+import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import Styles from '../creator-dashboard.module.css'
 import { Brush, Trash } from 'react-bootstrap-icons'
 import axios from 'axios'
 import BackofficeModal from '../../../reusable/modale/modal'
+import { Col } from 'react-bootstrap'
 
 export default function GuideCard({ id, img, title, subtitle, creator, museum }) {
 
@@ -34,34 +35,36 @@ export default function GuideCard({ id, img, title, subtitle, creator, museum })
             }
         } catch (error) {
             console.error(error)
-        }  
+        }
     }
-    
+
 
     return (
-        <div className={`${Styles.card} col-lg-3 col-md-4 col-6 p-0 d-flex flex-column justify-content-center align-items-center`}>
-            <img src={img} alt='immagine card' className={Styles.cardImage} />
-            <div className={`${Styles.textContainer} d-flex flex-column align-items-center justify-content-center text-center`}>
-                <h5 className={Styles.cardTitle}>{title}</h5>
-                <p className={Styles.cardDescription}>{subtitle}</p>
-                <div className='d-flex gap-2 justify-self-end'>
-                    <button onClick={goEdit} className={Styles.cardBtn}>
-                        <Brush />
-                    </button>
-                    <button className={Styles.cardBtn} onClick={handleShow}>
-                        <Trash />
-                    </button>
+        <Col xs={10} md={3} className='p-0'>
+            <div className={`${Styles.card} p-0 d-flex flex-column justify-content-center align-items-center`}>
+                <img src={img} alt='immagine card' className={Styles.cardImage} />
+                <div className={`${Styles.textContainer} d-flex flex-column align-items-center justify-content-center text-center`}>
+                    <h5 className={Styles.cardTitle}>{title}</h5>
+                    <p className={Styles.cardDescription}>{subtitle}</p>
+                    <div className='d-flex gap-2 justify-self-end'>
+                        <button onClick={goEdit} className={Styles.cardBtn}>
+                            <Brush />
+                        </button>
+                        <button className={Styles.cardBtn} onClick={handleShow}>
+                            <Trash />
+                        </button>
+                    </div>
                 </div>
+                {showModal && (
+                    <BackofficeModal
+                        body={modalMessage}
+                        closeModal={handleClose}
+                        secondButtonText={"Cancella la guida!"}
+                        doAction={isNotToShow ? null : handleDelete}
+                        isNotToShow={isNotToShow}
+                    />
+                )}
             </div>
-            {showModal && (
-                <BackofficeModal 
-                    body={modalMessage}
-                    closeModal = {handleClose}
-                    secondButtonText = {"Cancella la guida!"}
-                    doAction = {isNotToShow? null : handleDelete}
-                    isNotToShow = {isNotToShow}
-                />
-            )}
-        </div>
+        </Col>
     )
 }

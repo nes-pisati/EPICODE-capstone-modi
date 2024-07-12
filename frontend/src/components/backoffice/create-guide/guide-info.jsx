@@ -12,7 +12,6 @@ export default function GuideInfo() {
 
   const token = localStorage.getItem('creatorLogin')
   const decoded = jwtDecode(token)
-  console.log(decoded);
 
   const creatorId = decoded.id
 
