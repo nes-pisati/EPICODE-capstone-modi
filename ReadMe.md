@@ -30,3 +30,7 @@ Una volta iniziata la guida e una volta arrivati davanti ai diversi quadri prese
 
 Per la parte di backend ho utilizzato NodeJs e MongoDB.
 La parte di frontend è stata invece sviluppata utilizzando React e, come librerie esterne, Bootstrap per l'impaginazione dei Layout.
+
+-
+
+✅ 👉 Link per visualizzare e navigare il sito: https://modi-fe-vercel.vercel.app/
