@@ -1,36 +1,48 @@
-Modì è una Webapp pensata per dar vita a una nuova forma di divulgazione dell'arte. 🖼️
+# 🖼️ MODÌ - Artistic Storytelling WebApp
 
-🎨 Un'idea nata nel 2020 a cui riesco a dare una prima forma solo ora grazie al Capstone Project di EPICODE.
+> **Selected from EPICODE as one of the best Capstone Projects ** > *Turning art galleries into personalized thematic journeys through AI-powered storytelling.*
 
-Da grande appassionata di arte non ho mai potuto fare a meno di notare come all'interno delle Pinacoteche e delle Gallerie solo una piccola parte dei quadri esposti venisse approfondito nelle audioguide fornite. E tutti gli altri capolavori?
+MODÌ is a Full-Stack (MERN) application born from a vision I’ve carried since 2020: revolutionizing how we experience art. While traditional audio guides focus only on major masterpieces, MODÌ empowers experts to build **thematic paths**, connecting hidden gems through immersive storytelling.
 
-💡 Da qui l'intuizione: creare un'applicazione in cui giovani laureati in arti visive, esperti d'arte e divulgatori possano creare guide da far ascoltare alle persone. 🫶
+![modì_homepage](https://github.com/user-attachments/assets/045cfc81-0c85-47f8-8112-02518caf12fc)
 
-La particolarità di questo approccio è che Modì è un'applicazione di guide tematiche.
-Guide che parlano d'amore, di amicizia, di storia, di guerra, di mitologia (senza nessun limite alle possibilità! 😉) in cui vengono selezionati e raccolti solo i quadri e le opere che con i loro simbolismi possano rappresentare il tema scelto.
+## 💡 The Vision
+Modern museums often leave many masterpieces in the shadows. MODÌ bridges this gap by creating a dual-sided platform:
+* **For Creators:** A back-office suite to curate thematic audio guides and artworks.
+* **For Visitors:** A mobile-first interface to discover and follow unique paths in real-time.
 
-Si arriva quindi alla creazione di percorsi unici, speciali che possano riflettere le reali esigenze e i desideri di esplorazione di chi li andrà ad ascoltare.
+## 🚀 Technical Architecture & AI Integration
+This project represents my final synthesis of the **MERN Stack**, enhanced with Cloud AI services.
 
--
+### 🔊 Text-to-Speech Engine
+To ensure every thematic guide is accessible and immersive, I integrated the **Google Cloud Text-to-Speech API**:
+* **Dynamic Synthesis:** Automatically transforms the written descriptions provided by Creators into high-quality audio guides.
+* **Scalability:** This allows the platform to generate thousands of audio guides instantly without the need for manual recording, making the app truly scalable for any museum.
 
-L'applicazione prevede due tipologie di utilizzatori:
-🧑🏻‍🏫 Da una parte ci sono i creator, che possono registrarsi e avere la possibilità di creare Audioguide tematiche all'interno dei luoghi di cultura del nostro paese.
-👩🏻 Dall'altra ci sono gli utilizzatori che, visitando il sito, potranno cercare e trovare all'interno dell'app guide tematiche da approfondire e vivere in real time durante le loro visite ai musei.
+### Backend (The Engine)
+* **Runtime & Framework:** Node.js & Express.
+* **Database:** MongoDB with Mongoose.
+* **Security:** JWT-based authentication for the Creator Back-office.
+* **Cloud Integration:** Secure management of Google Cloud credentials and API orchestration.
+* 
+![modì_backoffice](https://github.com/user-attachments/assets/e48071a8-e694-4f77-91aa-a45eaaafc3f4)
 
--
+### Frontend (The Experience)
+* **Library:** React.js.
+* **Design & Layout:** Developed with a focus on **Design Supervision**, ensuring a premium, distraction-free interface.
+* **Styling:** Bootstrap & Custom SASS for responsive, brand-aligned layouts.
 
-La parte di Backoffice è dedicata ai Creator: dopo essersi registrato il creator ha la possibilità di creare una nuova guida o visualizzare e modificare le guide già create e i quadri contenuti in esse.
+<img width="1459" height="759" alt="modì-painting" src="https://github.com/user-attachments/assets/7784b686-8829-411c-9554-868c04ed7ce5" />
 
-La parte di Frontoffice, invece, è dedicata all'utilizzatore che dovrà solo selezionare il luogo che intende visitare, scegliere tra le possibilità la guida che più lo incuriosisce e iniziare il percorso.
-Una volta iniziata la guida e una volta arrivati davanti ai diversi quadri presenti, basterà cliccare sul quadro corrispondente per leggere o ascoltare il racconto che il Creator ha scritto.
+## 🛠 Tech Stack Summary
+* **Frontend:** React, JavaScript (ES6), Bootstrap.
+* **Backend:** Node.js, Express, JWT.
+* **Database:** MongoDB.
+* **AI/Cloud:** Google Cloud Text-to-Speech API.
+* **Tools:** Figma (Prototyping), Postman (API Testing).
 
--
+---
 
-💻 SPECIFICHE TECNICHE:
-
-Per la parte di backend ho utilizzato NodeJs e MongoDB.
-La parte di frontend è stata invece sviluppata utilizzando React e, come librerie esterne, Bootstrap per l'impaginazione dei Layout.
-
--
-
-✅ 👉 Link per visualizzare e navigare il sito: https://modi-fe-vercel.vercel.app/
+## 👤 Author
+**Vanessa Pisati** - Junior Frontend Developer
+* [LinkedIn](https://www.linkedin.com/in/nes-pisati)
